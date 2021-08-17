@@ -10,7 +10,11 @@ function newCar(yearInput, makeInput, modelInput){
     year: yearInput,
     make: makeInput,
     model: modelInput
-  }
+  };
   garage.push(newCarObject);
   return true;
 } // end newCar
+
+ console.log($('#button').on( 'click' , newCar()));
+
+console.log(garage);
