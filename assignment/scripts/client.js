@@ -15,17 +15,12 @@ function newCar(yearInput, makeInput, modelInput){
     model: modelInput
   };
   garage.push(newCarObject);
-  yearInput = $("#yearInput").val('');
-  makeInput = $("#makeInput").val('');
-  modelInput = $("#modelInput").val('');
+  let garageOutput = $( "#garageList" );
+  garageOutput.append(`<li> ${yearInput} ${makeInput} ${modelInput} </li>`);
   return true;
 } // end newCar
 
-
-
-
 function ready(){
-  console.log('JQ');
   $("#addButton").on('click', assign );
 }
 function assign(){
