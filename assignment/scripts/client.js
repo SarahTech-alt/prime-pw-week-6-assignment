@@ -27,12 +27,18 @@ function ready(){
 
 // executes newCar function with user inputs as parameters
 function addCar(){
-  // if ($("#yearInput").val() === "" || $("#makeInput").val() === "" || $("#modelInput").val() === ""){
-  //   // window.alert("Must enter all fields");
-  // }
+  // alerts user if field is left blank
+  if ($("#yearInput").val() === "" || $("#makeInput").val() === "" || $("#modelInput").val() === ""){
+    window.alert("Must enter all fields");
+    ready();
+  }
   newCar($("#yearInput").val(), $("#makeInput").val(), $("#modelInput").val());
   //console.log($("#yearInput").val());
   $("#garageList").append(`<li> ${$("#yearInput").val()} ${$("#makeInput").val()} ${$("#modelInput").val()} </li>`).css('background-color', 'tan');
+  clearValues();
+}
+
+function clearValues(){
   $("#yearInput").val('');
   $("#makeInput").val('');
   $('#modelInput').val('');
