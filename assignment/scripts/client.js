@@ -27,12 +27,18 @@ function ready(){
 
 // executes newCar function with user inputs as parameters
 function addCar(){
+  // if ($("#yearInput").val() === "" || $("#makeInput").val() === "" || $("#modelInput").val() === ""){
+  //   // window.alert("Must enter all fields");
+  // }
   newCar($("#yearInput").val(), $("#makeInput").val(), $("#modelInput").val());
   //console.log($("#yearInput").val());
-  $("#garageList").append(`<li> ${$("#yearInput").val()} ${$("#makeInput").val()} ${$("#modelInput").val()} </li>`);
+  $("#garageList").append(`<li> ${$("#yearInput").val()} ${$("#makeInput").val()} ${$("#modelInput").val()} </li>`).css('background-color', 'tan');
+  $("#yearInput").val('');
+  $("#makeInput").val('');
+  $('#modelInput').val('');
 }
 
-
+//$("input").prop('required',true);
 // Alternate approach to the problem would call assign on the button click instead of addCar
 function assign(){
   // placing user input into variables to work with
