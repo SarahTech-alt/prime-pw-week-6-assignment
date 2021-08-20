@@ -6,6 +6,10 @@ Do not change newCar for base mode!
 HINT: You will need to gather the input values and then call this function, passing in those input values.
 */
 
+// once page is finished loading and the button is clicked execute addCar function
+function ready(){
+  $("#addButton").on('click', addCar );
+}
 
 function newCar(yearInput, makeInput, modelInput){
   console.log('in newCar:', yearInput, makeInput, modelInput);
@@ -20,22 +24,21 @@ function newCar(yearInput, makeInput, modelInput){
   return true;
 } // end newCar
 
-// once page is finished loading and the button is clicked execute addCar function
-function ready(){
-  $("#addButton").on('click', addCar );
-}
+
 
 // executes newCar function with user inputs as parameters
 function addCar(){
-  // alerts user if field is left blank
+  //alerts user if field is left blank
   if ($("#yearInput").val() === "" || $("#makeInput").val() === "" || $("#modelInput").val() === ""){
     window.alert("Must enter all fields");
-    ready();
-  }
+    clearValues();
+  } else {
+  console.log("The value of make input is ", $("#makeInput").val());
   newCar($("#yearInput").val(), $("#makeInput").val(), $("#modelInput").val());
   //console.log($("#yearInput").val());
   $("#garageList").append(`<li> ${$("#yearInput").val()} ${$("#makeInput").val()} ${$("#modelInput").val()} </li>`).css('background-color', 'tan');
   clearValues();
+  }
 }
 
 function clearValues(){
