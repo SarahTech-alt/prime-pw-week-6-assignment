@@ -8,7 +8,7 @@ HINT: You will need to gather the input values and then call this function, pass
 
 // once page is finished loading and the button is clicked execute addCar function
 function ready(){
-  $("#addButton").on('click', addCar );
+  $("#addButton").on('click', assign );
 }
 
 function newCar(yearInput, makeInput, modelInput){
@@ -27,19 +27,18 @@ function newCar(yearInput, makeInput, modelInput){
 
 
 // executes newCar function with user inputs as parameters
-function addCar(){
-  //alerts user if field is left blank
-  if ($("#yearInput").val() === "" || $("#makeInput").val() === "" || $("#modelInput").val() === ""){
-    window.alert("Must enter all fields");
-    clearValues();
-  } else {
-  console.log("The value of make input is ", $("#makeInput").val());
-  newCar($("#yearInput").val(), $("#makeInput").val(), $("#modelInput").val());
-  //console.log($("#yearInput").val());
-  $("#garageList").append(`<li> ${$("#yearInput").val()} ${$("#makeInput").val()} ${$("#modelInput").val()} </li>`).css('background-color', 'tan');
-  clearValues();
-  }
-}
+// function addCar(){
+//   // alerts user if field is left blank
+//   if ($("#yearInput").val() === "" || $("#makeInput").val() === "" || $("#modelInput").val() === ""){
+//     window.alert("Must enter all fields!"); // alerts the user if any of the inputs are empty
+//     clearValues(); // if a field is empty call the clear values function to restart
+//   } else { // if all inputs are found run the newCar function with user inputs as parameters
+//   newCar($("#yearInput").val(), $("#makeInput").val(), $("#modelInput").val());
+//   // adds the inputted value to the DOM
+//   $("#garageList").append(`<li> ${$("#yearInput").val()} ${$("#makeInput").val()} ${$("#modelInput").val()} </li>`).css('background-color', 'tan');
+//   clearValues(); // calls the clear values function after writing to the
+//   }
+// }
 
 function clearValues(){
   $("#yearInput").val('');
@@ -54,15 +53,18 @@ function assign(){
   let yearInput = $("#yearInput").val();
   let makeInput = $("#makeInput").val();
   let modelInput = $("#modelInput").val();
-  // running the newCar function to add items to garage
-  newCar(yearInput,makeInput,modelInput);
-  // add car input to DOM
-  $("#garageList").append(`<li> ${yearInput} ${makeInput} ${modelInput}`).css('background-color','#cac7a8').css('color','#0f020b');
-  // clear input values
-  $("#yearInput").val('');
-  $("#makeInput").val('');
-  $('#modelInput').val('');
-}
+    if ($("#yearInput").val() === "" || $("#makeInput").val() === "" || $("#modelInput").val() === ""){
+      window.alert("Must enter all fields!"); // alerts the user if any of the inputs are empty
+      clearValues(); // if a field is empty call the clear values function to restart
+    } else { // if all inputs are found run the newCar function with user inputs as parameters
+      newCar(yearInput,makeInput,modelInput);
+      // add car input to DOM
+      $("#garageList").append(`<li> ${yearInput} ${makeInput} ${modelInput}`).css('background-color','#cac7a8').css('color','#0f020b');
+      // // clear input values
+      clearValues();
+      console.log(garage);
+    }
+  }
 
 // if (newCar()){
 //   //for (let cars in garage){
