@@ -1,3 +1,8 @@
 body{
   background-color: #d8c1bc;
 }
+
+img {
+  height: 200px;
+  width: 50%;
+}

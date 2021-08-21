@@ -1,5 +1,6 @@
 $( document ).ready(ready);
 let garage = [];
+const maxCars = 10;
 
 /*
 Do not change newCar for base mode!
@@ -24,51 +25,36 @@ function newCar(yearInput, makeInput, modelInput){
   return true;
 } // end newCar
 
-
-
-// executes newCar function with user inputs as parameters
-// function addCar(){
-//   // alerts user if field is left blank
-//   if ($("#yearInput").val() === "" || $("#makeInput").val() === "" || $("#modelInput").val() === ""){
-//     window.alert("Must enter all fields!"); // alerts the user if any of the inputs are empty
-//     clearValues(); // if a field is empty call the clear values function to restart
-//   } else { // if all inputs are found run the newCar function with user inputs as parameters
-//   newCar($("#yearInput").val(), $("#makeInput").val(), $("#modelInput").val());
-//   // adds the inputted value to the DOM
-//   $("#garageList").append(`<li> ${$("#yearInput").val()} ${$("#makeInput").val()} ${$("#modelInput").val()} </li>`).css('background-color', 'tan');
-//   clearValues(); // calls the clear values function after writing to the
-//   }
-// }
-
 function clearValues(){
   $("#yearInput").val('');
   $("#makeInput").val('');
   $('#modelInput').val('');
-}
+  $('#imgURLInput').val('');
+} // resets the input fields to empty
 
 //$("input").prop('required',true);
 // Alternate approach to the problem would call assign on the button click instead of addCar
 function assign(){
-  // placing user input into variables to work with
+  // placing user input into variables to work with to increase readability
   let yearInput = $("#yearInput").val();
   let makeInput = $("#makeInput").val();
   let modelInput = $("#modelInput").val();
+  let imgURLInput = $("#imgURLInput").val();
+  let imageDOMStyle = `<img src = ${imgURLInput} alt= "Car Image" /> `
     if ($("#yearInput").val() === "" || $("#makeInput").val() === "" || $("#modelInput").val() === ""){
       window.alert("Must enter all fields!"); // alerts the user if any of the inputs are empty
       clearValues(); // if a field is empty call the clear values function to restart
-    } else { // if all inputs are found run the newCar function with user inputs as parameters
+    }
+    if (garage.length >= maxCars){
+      window.alert("There is no more room in the garage!"); // alerts the user if the garage is at capacity
+      clearValues(); // if a field is empty call the clear values function to restart
+    }
+
+    else { // if all inputs are found run the newCar function with user inputs as parameters
       newCar(yearInput,makeInput,modelInput);
-      // add car input to DOM
-      $("#garageList").append(`<li> ${yearInput} ${makeInput} ${modelInput}`).css('background-color','#cac7a8').css('color','#0f020b');
-      // // clear input values
-      clearValues();
-      console.log(garage);
+      $("#garageList").append(`<li> ${yearInput} ${makeInput} ${modelInput} </li> `).css('background-color','#cac7a8').css('color','#0f020b'); // adding car information as an unordered list to the DOM
+      $("#garageContents").append(`${imageDOMStyle}`); // add image to the DOM
+      clearValues(); // clears input values
+      console.log(garage); // checking garage contents
     }
   }
-
-// if (newCar()){
-//   //for (let cars in garage){
-//     console.log(garage);
-//     //$("#garageList").append(`<li> ${cars.yearInput}`))
-//   //}
-// }
